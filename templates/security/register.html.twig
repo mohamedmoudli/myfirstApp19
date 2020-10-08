@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}create account!{% endblock %}
+
+{% block body %}
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.email) }}
+    {{ form_row(form.Username) }}
+    {{ form_row(form.Phonenumber) }}
+    {{ form_row(form.Password.first) }}
+    {{ form_end(form) }}
+
+    <button type="submit">Register!</button>
+
+{% endblock %}

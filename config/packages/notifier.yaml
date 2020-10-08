@@ -1,0 +1,20 @@
+framework:
+  notifier:
+    texter_transports:
+      twilio: '%env(TWILIO_DSN)%'
+    chatter_transports:
+      slack: '%env(SLACK_DSN)%'
+      main: '%env(SLACK_DSN)% || %env(TELEGRAM_DSN)%'
+
+      # Send notifications to the next scheduled transport calculated by round robin
+      roundrobin: '%env(SLACK_DSN)% && %env(TELEGRAM_DSN)%'
+    channel_policy:
+      # Use SMS, Slack and email for urgent notifications
+      urgent: [ 'sms', 'chat/slack', 'email' ]
+
+      # Use Slack for highly important notifications
+      high: [ 'chat/slack' ]
+
+      # Use browser for medium and low notifications
+      medium: [ 'browser' ]
+      low: [ 'browser' ]
